@@ -51,6 +51,19 @@ memory (most modern computers should be fine).
 rather than reading in the entire dataset and subsetting to those
 dates.
 
+  - **NOTE**: The following command in the Unix shell prints out the first line
+    starting with "1/2/2007" and the last line starting with "2/2/2007"
+    in the 'household_power_consumption.txt' file. The output includes 
+    line numbers, which are used in the R script to extract the data
+    for these two dates.
+      ```
+      $ grep -n "^[1|2]/2/2007" household_power_consumption.txt 2>&1 | \
+        (head -n1 && tail -n1)
+        
+      66638:1/2/2007;00:00:00;0.326;0.128;243.150;1.400;0.000;0.000;0.000
+      69517:2/2/2007;23:59:00;3.680;0.224;240.370;15.200;0.000;2.000;18.000
+      ```
+
 * You may find it useful to convert the Date and Time variables to
 Date/Time classes in R using the `strptime()` and `as.Date()`
 functions.
